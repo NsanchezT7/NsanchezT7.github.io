@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Ecuaciones</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="estilos.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script>
+            function operacion(){
+                var a=parseFloat(document.Myform.numero1.value);
+                var b=parseFloat(document.Myform.numero2.value);
+                var c=parseFloat(document.Myform.numero3.value);
+                var determinante= Math.pow(b,2)-(4*a*c);
+                if (determinante>0)
+                {
+                    var x1=((b*(-1))+ Math.sqrt(determinante))/(2*a);
+                    var x2=((b*(-1))- Math.sqrt(determinante))/(2*a);
+                    resul1=document.getElementById("resultado1");
+                    resul2=document.getElementById("resultado2");
+                    resul1.innerHTML=x1
+                    resul2.innerHTML=x2
+                }
+                else
+                {
+                   swal({
+                        title: "Ups",
+                        text: "El Valor de la ecuacion es un numero complejo",
+                        icon: "warning",
+                        dangerMode: true,
+                    })
+                    var x1=NaN
+                    var x2=NaN
+                    resul1=document.getElementById("resultado1");
+                    resul2=document.getElementById("resultado2");
+                    resul1.innerHTML=x1
+                    resul2.innerHTML=x2
+                }      
+            }
+        </script>
+    </head>
+   <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="50">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+            <div class="container-fluid">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#section1">Ecuacion cuadratica</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="section1" class="container-fluid bg-success text-white" style="padding:100px 20px;">
+            <form name="Myform">
+            <h1>Ecuacion Cuadratica</h1>
+                <div class="row">
+                    <div class="col-sm-2 p-3  bg-primary text-white">Ingres el valor de a</div>
+                    <div class="col-sm-2 p-3  bg-black"><input type="text" name="numero1" size="2" style="text-align:center"></div>
+                    <div class="col-sm-2 p-3  bg-primary text-white">Ingres el valor de b</div>
+                    <div class="col-sm-2 p-3 bg-black"><input type="text" name="numero2" size="2" style="text-align:center"></div>
+                    <div class="col-sm-2 p-3  bg-primary text-white">Ingres el valor de c</div>
+                    <div class="col-sm-2 p-3 bg-black"><input type="text" name="numero3" size="2" style="text-align:center"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xxl-1 bg-white">
+                    <img src="formula.png" class="mx-auto d-block" style="width:50%"> 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-1 p-2  text-white"><button type="button" class="btn btn-primary btn-lg" onclick="operacion()">Resultado</button></div>
+                </div>
+                 <div class="row">
+                    <div class="col-sm-3 p-3  bg-primary text-white">X1=</div>
+                    <div class="col-sm-3 p-3  bg-black"><h3 id="resultado1">---</h3></div>
+                    <div class="col-sm-3 p-3  bg-primary text-white">X2=</div>
+                    <div class="col-sm-3 p-3 bg-black"><h3 id="resultado2">---</h3></div>
+                </div>
+            </form>
+        </div>
+   </body>
+</html>
